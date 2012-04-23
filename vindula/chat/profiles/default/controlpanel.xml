@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<object
+    name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="vindula.chat">
+
+    <configlet
+        title="Vindula: Chat Connector"
+        action_id="vindula.chat.connector"
+        appId="vindula.chat"
+        category="Products"
+        condition_expr=""
+        url_expr="string:${portal_url}/@@vindulachat-controlpanel"
+        icon_expr="string:${portal_url}/++resource++vindula.chat/img/vindula.png"
+        visible="True"
+        i18n:attributes="title">
+            <permission>Manage portal</permission>
+    </configlet>
+
+</object>

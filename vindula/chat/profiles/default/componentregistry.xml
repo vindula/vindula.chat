@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<componentregistry>
+  <utilities>
+    <utility
+       interface="vindula.chat.interfaces.IXMPPPasswordStorage"
+       factory="vindula.chat.storage.XMPPPasswordStorage"
+     />
+  </utilities>
+</componentregistry>
