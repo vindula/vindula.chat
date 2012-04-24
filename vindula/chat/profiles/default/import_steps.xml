@@ -8,6 +8,12 @@
 
 		</import-step>
 
+		<import-step id="vindula.chat.create_obj_settings" 
+					 version="20120420-01"
+	                 handler="vindula.chat.setuphandlers.create_obj_settings"
+	                 title="Vindula Chat: Cria o objeto de configuração do vindula chat">
+			<dependency step="content"/>
+		</import-step>
 				
 		
 		

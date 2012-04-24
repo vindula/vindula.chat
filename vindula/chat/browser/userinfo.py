@@ -7,6 +7,8 @@ from AccessControl import Unauthorized
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 
+from vindula.myvindula.user import BaseFunc, ModelsFuncDetails 
+
 
 class XMPPUserInfo(BrowserView):
 
@@ -50,3 +52,23 @@ class XMPPUserDetails(BrowserView):
     @property
     def portrait_url(self):
         return self._portrait_url
+
+    def get_prefs_user(self, user):
+        try:user_id = unicode(user, 'utf-8')    
+        except:user_id = user 
+
+        return ModelsFuncDetails().get_FuncDetails(user_id)
+
+    def getPhoto(self,photo):
+        if photo is not None and not ' ' in photo:
+            url_foto = BaseFunc().get_imageVindulaUser(photo)
+            if url_foto:
+                return url_foto
+                #return self.context.absolute_url()+'/'+photo #+ '/image_thumb'
+            else:
+                return self.context.absolute_url()+'/defaultUser.png'
+        else:
+            return self.context.absolute_url()+'/defaultUser.png'     
+
+
+

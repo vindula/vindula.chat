@@ -10,7 +10,7 @@
         appId="vindula.chat"
         category="Products"
         condition_expr=""
-        url_expr="string:${portal_url}/@@vindulachat-controlpanel"
+        url_expr="string:${portal_url}/control-panel-objects/vindula_chat_settings/edit"
         icon_expr="string:${portal_url}/++resource++vindula.chat/img/vindula.png"
         visible="True"
         i18n:attributes="title">

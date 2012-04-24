@@ -1,0 +1,8 @@
+Changelog
+=========
+
+1.1 - 2012-04-24
+------------------
+
+- Adição do objeto de configuração e ativação do vindula.chat
+- Alteração e customizações gerais do sistema

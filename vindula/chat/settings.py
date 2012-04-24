@@ -7,6 +7,7 @@ from twisted.words.protocols.jabber.jid import JID
 from zope.component import getUtility
 from zope.interface import implements
 from plone.z3cform import layout
+from zope.app.component.hooks import getSite 
 
 from vindula.chat.utils.models import ModelsUserOpenFire
 from vindula.chat.interfaces import IXMPPPasswordStorage, IXMPPUsers, IVindulaChatConnector
@@ -33,28 +34,29 @@ class XMPPUsers(object):
             return pass_storage.password
         else:
             return None
-        
-    
     
     def getSettings(self):
-        registry = getUtility(IRegistry)
-        vars = {'enable_chat':registry.records.get('vindula.chat.interfaces.IVindulaChatConnector.enable_chat').value,
-                'xmpp_domain':registry.records.get('vindula.chat.interfaces.IVindulaChatConnector.xmpp_domain').value,
-                'admin_jid':registry.records.get('vindula.chat.interfaces.IVindulaChatConnector.admin_jid').value,
-                'admin_pwd':registry.records.get('vindula.chat.interfaces.IVindulaChatConnector.admin_pwd').value,
+        try:
+            registry = getSite()['control-panel-objects']['vindula_chat_settings']
                 
-                'conference_jid':registry.records.get('vindula.chat.interfaces.IVindulaChatConnector.conference_jid').value,
-                'pubsub_jid':registry.records.get('vindula.chat.interfaces.IVindulaChatConnector.pubsub_jid').value,
-                
-                'key_http_user':registry.records.get('vindula.chat.interfaces.IVindulaChatConnector.key_http_user').value,
-                }
+            vars = {'enable_chat':registry.enable_chat,
+                    'xmpp_domain':registry.xmpp_domain,
+                    'admin_jid':registry.admin_jid,
+                    'admin_pwd':registry.admin_pwd,
+                    
+                    'conference_jid':registry.conference_jid,
+                    'pubsub_jid':registry.pubsub_jid,
+                    
+                    'key_http_user':registry.key_http_user,
+                    }
+        except:        
+            vars = {'enable_chat':False,
+                    'xmpp_domain':'vindula.com' ,
+                    'admin_jid':'admin@vindula.com',
+                    'admin_pwd':'temp123',
+                    'conference_jid':'secret',
+                    'pubsub_jid':'plone.vindula.com',
+                    'key_http_user':'NYIqhNdx'
+                    }
         
         return vars
-    
-
-
-class VindulaChatControlPanel(RegistryEditForm):
-    schema = IVindulaChatConnector
-
-VindulaChatControlPanelView = layout.wrap_form(VindulaChatControlPanel, ControlPanelFormWrapper)
-VindulaChatControlPanelView.label = u"Vindula: Chat settings"

@@ -32,41 +32,28 @@ def setupPrincipal(principal_jid, principal_password, principal_id):
         logger.info("%s - Error - %s "% (user, result))
         return False
     else:
-        logger.info("%s - OK"% (user))
+        logger.info("%s - OK -"% (user))
         return True
     
 
-    
-    
-#    if not ModelsUserOpenFire().get_UserOpenFire_by_username(principal_id):
-#        D['username'] = principal_id
-#        D['encryptedPassword'] = unicode(x) 
-#        D['name'] = principal_id
-#        D['email'] = principal_jid.userhost()
-#        D['creationDate'] = u'0'
-#        D['modificationDate'] = u'0'
-#    
-#        ModelsUserOpenFire().set_UserOpenFire(**D)
-#    
-#    if not ModelsGroupUserOpenFire().get_GroupUserOpenFire_by_username(principal_id):
-#        F = {}
-#        F['groupName'] = u'vindula' 
-#        F['username'] = principal_id
-#        F['administrator'] = False
-#        ModelsGroupUserOpenFire().set_GroupUserOpenFire(**F)
-
-
-def deletePrincipal(client, principal_jid):
+def deletePrincipal(principal_jid):
     """Delete a jabber account as well as remove its associated nodes.
     """
     principal_id = principal_jid.user
 
-    def deleteUser(result):
-        if result == False:
-            return False
-        d = client.admin.deleteUsers(principal_jid.userhost())
-        return d
+    xmpp_users = getUtility(IXMPPUsers)       
+    host = getSite().portal_url() + '/http-user'
+    key = xmpp_users.getSettings().get('key_http_user')
 
-    d = client.deleteNode(principal_id)
-    d.addCallback(deleteUser)
-    return d
+    url = '%s/plugins/userService/userservice?type=delete&secret=%s&username=%s'%(host,key,principal_id)
+    page = urllib.urlopen(url)
+    result = page.read()
+
+    if 'error' in result:
+        logger.info("%s - Error - %s "% (principal_id, result))
+        return False
+    else:
+        logger.info("%s - OK Delete -"% (principal_id))
+        return True
+    
+    

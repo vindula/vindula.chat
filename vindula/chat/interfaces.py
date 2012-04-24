@@ -9,15 +9,7 @@ class IVindulaChatConnector(Interface):
     """
     Vindula Chat Connector interface
     """
-    enable_chat = schema.Bool(title=u"Ativar função de chat",default=True)
-    xmpp_domain = schema.TextLine(title=u"Endereço do dominio da intranet",default=u"vindula.com")
-    admin_jid = schema.TextLine(title=u"Login do administrador do servidor XMPP ",default=u'admin@vindula.com')
-    admin_pwd = schema.TextLine(title=u"Senha do login do administrador",default=u"temp123")
-    
-    conference_jid = schema.TextLine(title=u"Endereço do compartilhamento do servidor XMPP",default=u"plone.vindula.com")
-    pubsub_jid = schema.TextLine(title=u"Chave de conexão de compartilhamento do servidor XMPP",default=u"secret")
-        
-    key_http_user = schema.TextLine(title=u"Chave de HttP com o plugin 'User Service' do servidor XMPP",default=u"NYIqhNdx")
+ 
 
 class IXMPPUsers(Interface):
     """ Marker interface for the XMPP tool.

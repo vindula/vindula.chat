@@ -42,11 +42,4 @@
     permission="zope2.View"
     />
 
-  <browser:page
-	    name="vindulachat-controlpanel"
-	    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-	    permission="cmf.ManagePortal"
-	    class="vindula.chat.settings.VindulaChatControlPanel"
-	    />  
-
 </configure>

@@ -25,12 +25,12 @@ class SetupXMPPForm(form.Form):
     label = _("Setup XMPP")
     description = _("label_setup_warning",
         """
-        Warning: This action should ONLY be run after the initial setup. It
-        will create the necessary users and nodes on your XMPP server
-        according to your plone site users. Unless you know what you are doing
-        you do not need to run it again afterwards.
-        Make sure you have set the correct settings for you XMPP server before
-        submitting.
+        Aviso: Esta ação deve ser executado somente após a configuração inicial. ele
+         irá criar os usuários necessários em seu servidor XMPP
+         de acordo com os usuários do site Plone. A menos que você saiba o que está fazendo
+         você não precisa executá-lo novamente depois.
+         Certifique-se de ter definido as configurações corretas para seu servidor XMPP antes
+         submeter-se.
         """)
 
     ignoreContext = True

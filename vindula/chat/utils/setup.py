@@ -46,3 +46,6 @@ def setupXMPPEnvironment(context):
        
 
     return True
+
+
+

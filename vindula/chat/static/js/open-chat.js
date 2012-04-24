@@ -62,6 +62,7 @@ function restructureChatBoxes() {
 				$j("#chatbox_"+chatboxtitle).css('right', width+'px');
 			}
 			align++;
+			$j("#chatbox_"+chatboxtitle).css('z-index',1000);
 		}
 	}
 }
@@ -99,6 +100,7 @@ function createChatBox(chatboxtitle,minimizeChatBox,conteudo) {
                 			.appendTo($j( "body" ));
 			   
 	$j("#chatbox_"+chatboxtitle).css('bottom', '0px');
+	$j("#chatbox_"+chatboxtitle).css('z-index',1000);
 	
 	chatBoxeslength = 0;
 
@@ -346,51 +348,6 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxtitle) {
 	}
 	 
 }
-/*
-function startChatSession(){  
-	$j.ajax({
-	  url: URL_CHAT_start,
-	  cache: false,
-	  dataType: "json",
-	  success: function(data) {
- 
-		username = data.username;
-
-		$j.each(data.items, function(i,item){
-			if (item)	{ // fix strange ie bug
-
-				chatboxtitle = item.f;
-
-				if ($j("#chatbox_"+chatboxtitle).length <= 0) {
-					createChatBox(chatboxtitle,1);
-				}
-				
-				if (item.s == 1) {
-					item.f = username;
-				}
-
-				if (item.s == 2) {
-					$j("#chatbox_"+chatboxtitle+" .chatboxcontent").append('<div class="chatboxmessage">\
-																			<span class="chatboxinfo">'+item.m+'</span></div>');
-				} else {
-					$j("#chatbox_"+chatboxtitle+" .chatboxcontent").append('<div class="chatboxmessage">\
-																			<span class="chatboxmessagefrom">'+item.f+':&nbsp;&nbsp;</span>\
-																			<span class="chatboxmessagecontent">'+item.m+'</span></div>');
-				}
-			}
-		});
-		
-		for (i=0;i<chatBoxes.length;i++) {
-			chatboxtitle = chatBoxes[i];
-			$j("#chatbox_"+chatboxtitle+" .chatboxcontent").scrollTop($j("#chatbox_"+chatboxtitle+" .chatboxcontent")[0].scrollHeight);
-			setTimeout('$j("#chatbox_"+chatboxtitle+" .chatboxcontent").scrollTop($j("#chatbox_"+chatboxtitle+" .chatboxcontent")[0].scrollHeight);', 100); // yet another strange ie bug
-		}
-	
-	setTimeout('chatHeartbeat();',chatHeartbeatTime);
-		
-	}});
-}
-*/
 /**
  * Cookie plugin
  *

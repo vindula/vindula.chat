@@ -25,64 +25,6 @@ class OpenFireStore(object):
         # divide o dicionario 'convertidos'
         for key in kwargs:
             setattr(self,key,kwargs[key])
-        
-        # adiciona a data atual
-        #self.date_creation = datetime.now()    
-
-
-
-#class ModelsUserOpenFire(Storm, OpenFireStore):    
-#    __storm_table__ = 'ofUser'
-#
-#    username = Unicode(primary=True)
-#    plainPassword = Unicode()
-#    encryptedPassword  = Unicode()
-#    name = Unicode()
-#    email = Unicode()
-#    creationDate = Unicode()
-#    modificationDate = Unicode()
-#    
-#    def set_UserOpenFire(self, **kwargs):
-#        # adicionando...
-#        user = ModelsUserOpenFire(**kwargs)
-#        self.store.add(user)
-#        self.store.flush()     
-#    
-#    def get_UserOpenFire_by_username(self,username):
-#        data = self.store.find(ModelsUserOpenFire, ModelsUserOpenFire.username == username).one()
-#        
-#        if data:
-#            return data
-#        else:
-#            return None
-#
-#    
-#    
-#class ModelsGroupUserOpenFire(Storm, OpenFireStore):    
-#    __storm_table__ = 'ofGroupUser'    
-#    
-#    __storm_primary__ = "groupName", "username","administrator"
-#    
-#    groupName = Unicode()
-#    username = Unicode()
-#    administrator = Bool()
-#    
-#    def set_GroupUserOpenFire(self, **kwargs):
-#        # adicionando...
-#        groupUser = ModelsGroupUserOpenFire(**kwargs)
-#        self.store.add(groupUser)
-#        self.store.flush()          
-#
-#    def get_GroupUserOpenFire_by_username(self,username):
-#        data = self.store.find(ModelsGroupUserOpenFire, ModelsGroupUserOpenFire.groupName == u'vindula',
-#                                                        ModelsGroupUserOpenFire.username == username,
-#                                                        ModelsGroupUserOpenFire.administrator == False).one()
-#        
-#        if data:
-#            return data
-#        else:
-#            return None
-
 
     
 class ModelsGroupOpenFire(Storm, OpenFireStore):    
@@ -105,11 +47,3 @@ class ModelsGroupOpenFire(Storm, OpenFireStore):
             return data
         else:
             return None
-        
-        
-        
-#        key = 'This is a test key'
-#        cipher = Blowfish(key)
-#        cl = cipher.cipher(xl, cipher.ENCRYPT)
-#        
-

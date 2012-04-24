@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<object>
-	
-  <!--order manager="plone.portalheader" skinname="Plone Default">
-    <viewlet name="vindula.chat.listUsers" insert-after="vindula.themedefault.usefullinks"/>
-  </order-->
-
-</object> 
