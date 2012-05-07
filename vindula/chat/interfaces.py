@@ -4,13 +4,6 @@ from zope.component.interfaces import IObjectEvent, implements
 from zope.viewlet.interfaces import IViewletManager
 from zope import schema
 
-
-class IVindulaChatConnector(Interface):
-    """
-    Vindula Chat Connector interface
-    """
- 
-
 class IXMPPUsers(Interface):
     """ Marker interface for the XMPP tool.
     """

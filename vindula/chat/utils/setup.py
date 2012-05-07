@@ -8,10 +8,7 @@ from zope.component import getUtility
 from Products.CMFCore.utils import getToolByName
 
 from vindula.chat.interfaces import IAdminClient, IXMPPPasswordStorage, IXMPPUsers
-
-#from vindula.chat.utils.pubsub import getAllChildNodes
 from vindula.chat.utils.users import setupPrincipal
-#from vindula.chat.subscribers.startup import populatePubSubStorage
 from vindula.chat.utils.models import ModelsUserOpenFire
 import pickle
 
@@ -25,8 +22,10 @@ def setupXMPPEnvironment(context):
     member_ids = mt.listMemberIds()
     pass_storage.clear()
     
+    log = []
     for member_id in member_ids:
         D = {}
+        resposta = {}
         member_jid = xmpp_users.getUserJID(member_id)
         member_password = pass_storage.set(member_id)
         
@@ -38,14 +37,15 @@ def setupXMPPEnvironment(context):
         try:D['password'] = unicode(member_password,'utf-8')
         except:D['password'] = member_password
             
-        #if ModelsUserOpenFire().get_UserOpenFire_by_username(D['username']):
-        #    ModelsUserOpenFire().remove_UserOpenFire_by_username(D['username'])
-        
+        resposta['user'] = member_jid
+
         if setupPrincipal(member_jid, member_password, D['username']):
             ModelsUserOpenFire().set_UserOpenFire(**D)
-       
+            
+            resposta['log'] = "Usuario criado com sucesso"
+        else:
+            resposta['log'] = "Erro ao criar o usuario"
+        
+        log.append(resposta)
 
-    return True
-
-
-
+    return log

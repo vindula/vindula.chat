@@ -1,5 +1,4 @@
 # coding: utf-8
-
 from zope.app.component.hooks import getSite
 from vindula.chat import MessageFactory as _
 
@@ -40,6 +39,3 @@ class ModelsUserOpenFire(Storm, BaseStore):
         if result:
             self.store.remove(result)
             self.store.flush()
-
-
-        

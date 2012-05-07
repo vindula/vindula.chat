@@ -20,6 +20,12 @@ class IVindulaChatSettings(form.Schema):
                                   default=_(u"vindula.com"),
                                   required=True,
                                   )
+    xmpp_host = schema.TextLine(title=_(u"Endereço do servidor xmpp"),
+                                  description=_(u""),
+                                  default=_(u"127.0.0.1"),
+                                  required=True,
+                                  )
+    
     
     admin_jid = schema.TextLine(title=_(u"Login do administrador do servidor XMPP "),
                                 description=_(u""),
@@ -43,7 +49,7 @@ class IVindulaChatSettings(form.Schema):
                                  required=True,
                                  )
         
-    key_http_user = schema.TextLine(title=_(u"Chave de HttP com o plugin 'User Service' do servidor XMPP"),
+    key_http_user = schema.TextLine(title=_(u"Chave de HTTP com o plugin 'User Service' do servidor XMPP"),
                                     description=_(u""),
                                     default=_(u"NYIqhNdx"),
                                     required=True,)

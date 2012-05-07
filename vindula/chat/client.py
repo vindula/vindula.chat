@@ -14,7 +14,6 @@ from jarn.xmpp.twisted.protocols import AdminHandler, PubSubHandler, ChatHandler
 
 from  vindula.chat.interfaces import IAdminClient, IPubSubStorage, AdminClientConnected, AdminClientDisconnected
 
-
 logger = logging.getLogger('vindula.chat')
 
 
@@ -219,3 +218,4 @@ class AdminClient(XMPPClient, PubSubClientMixIn):
         super(AdminClient, self)._disconnected(reason)
         ev = AdminClientDisconnected(self)
         notify(ev)
+

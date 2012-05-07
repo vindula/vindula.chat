@@ -1,23 +1,24 @@
 <div id="online-contacts_viewlet" >
-	<tal:def tal:define="member python:context.portal_membership.getAuthenticatedMember()">
-		<tal:cond condition="python: (str(member) != 'Anonymous User') and (viewlet.enableChat())">
-			<div class="portletWrapper" id="online-contacts" >
-				<dl class="portlet online-contacts" i18n:domain="vindula.chat" style="margin-bottom:0;">
-			    	
-				    	<dt class="portletHeader">
-				        	<span >Quem está online?</span>
-				    	</dt>
-						<dd class="portletItem">
-							<input type="hidden" name="username" id="username" tal:attributes="value member/id|nothing" />
-							<div id="online-users-container" class="autohide">
-					        	<ul id="online-users">
-					            	<li id="no-users-online">Não há usuários online</li>
-					        	</ul>
-					    	</div>
-				        </dd>
-						<dd class="portletFooter" ></dd>
-			
-				</dl>
+	<tal:def tal:define="member python:context.portal_membership.getAuthenticatedMember();
+						view viewlet;">
+		<tal:cond condition="python: (str(member) != 'Anonymous User') and (view.enableChat())">
+			<div id="ijabbar" tal:define="iJabConf view/iJabConf;
+										  site_url view/site_url;">
+				
+				<tal:dummy define="user view/user;
+								   passwd view/password;
+								   dummy python:request.RESPONSE.setCookie('__ijab_name',user);
+								   dummy python:request.RESPONSE.setCookie('__ijab_password',passwd)" />
+				
+				<script type="text/javascript"
+						tal:content="string:var iJabConf=eval(${iJabConf});">
+						var iJabConf = {...};
+			    </script>
+			    
+			    <script type="text/javascript" language="javascript" src="ijab_i18n_pt-br.js"></script>
+				<script type="text/javascript" src="ijab.nocache.js"
+			    	tal:attributes="src string:${site_url}/ijab/ijab.nocache.js">
+			    </script>
 			</div>
 		</tal:cond>
 	</tal:def>

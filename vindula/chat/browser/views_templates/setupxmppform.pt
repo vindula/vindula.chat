@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master">
+
+	<head>
+		
+	</head>
+
+	<body>
+	    <div metal:fill-slot="content-core">
+	    	
+	    	<h1>Setup XMPP</h1>
+	    	<br />
+			<p>Aviso: Esta ação deve ser executado somente após a configuração inicial. ele
+		         irá criar os usuários necessários em seu servidor XMPP
+		         de acordo com os usuários do site Plone. A menos que você saiba o que está fazendo
+		         você não precisa executá-lo novamente depois.
+		         Certifique-se de ter definido as configurações corretas para seu servidor XMPP antes
+		         submeter-se.</p>
+			
+			<form action="#"
+	                method="post" enctype="multipart/form-data"
+	                tal:attributes="action string:${context/absolute_url}/setup-xmpp">
+					<div id="buttom">
+						<input type="hidden" name="form.submitted:boolean" value="True" />
+					    <input type="submit" name="submit" value="Setup" class="context" i18n:attributes="value;" />
+					</div>
+			</form>
+			
+			<br />
+			<div tal:condition="view/log|nothing">
+				<tal:rep repeat="item view/log|python:[]">
+					<p> <span tal:content="item/user|nothing" /> |
+						<span tal:content="item/log|nothing" />
+						
+					</p>
+					
+					
+				</tal:rep>
+				
+				
+			</div>
+			
+			
+		</div>
+	</body>
+</html>

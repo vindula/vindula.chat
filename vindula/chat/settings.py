@@ -10,7 +10,7 @@ from plone.z3cform import layout
 from zope.app.component.hooks import getSite 
 
 from vindula.chat.utils.models import ModelsUserOpenFire
-from vindula.chat.interfaces import IXMPPPasswordStorage, IXMPPUsers, IVindulaChatConnector
+from vindula.chat.interfaces import IXMPPPasswordStorage, IXMPPUsers
 
 logger = logging.getLogger('vindula.chat')
 
@@ -41,6 +41,8 @@ class XMPPUsers(object):
                 
             vars = {'enable_chat':registry.enable_chat,
                     'xmpp_domain':registry.xmpp_domain,
+                    'xmpp_host':registry.xmpp_host,
+                    
                     'admin_jid':registry.admin_jid,
                     'admin_pwd':registry.admin_pwd,
                     
@@ -52,6 +54,7 @@ class XMPPUsers(object):
         except:        
             vars = {'enable_chat':False,
                     'xmpp_domain':'vindula.com' ,
+                    'xmpp_host':'127.0.0.1',
                     'admin_jid':'admin@vindula.com',
                     'admin_pwd':'temp123',
                     'conference_jid':'secret',

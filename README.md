@@ -34,3 +34,8 @@ Instalação
 			  <configure xmlns="http://namespaces.zope.org/zope">
 			    <include package="jarn.xmpp.twisted" file="reactor.zcml" />
 			  </configure>
+			  
+	* Cofigurar a conexão com o banco de dados no arquivo configure.zcml
+		<store
+	  		name="openfire"
+	  		uri="mysql://root:root@localhost/openfire" />

@@ -12,7 +12,7 @@ def set_GroupXMPP_default(context):
             ModelsGroupOpenFire().set_GroupOpenFire(**D)
    
     except:
-        print "Error" 
+        print "Error - not create group in database of openfire" 
 
 
 def create_obj_settings(context):
