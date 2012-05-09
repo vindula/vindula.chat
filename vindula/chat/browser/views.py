@@ -6,7 +6,7 @@ from zope.app.component.hooks import getSite
 from zope.component import getUtility
 from Products.CMFCore.interfaces import ISiteRoot
 from zope.interface import Interface
-import urllib, logging
+import urllib2, logging
 
 from vindula.myvindula.user import BaseFunc, ModelsFuncDetails
 from vindula.chat.utils.setup import setupXMPPEnvironment
@@ -53,10 +53,7 @@ class ChatUserFoto(grok.View):
     grok.require('zope2.View')
     
     def render(self):
-        url = self.url_image
-        if url:
-            page = urllib.urlopen(url)
-            return page.read()
+        return self.url_image
     
     def update(self):
         form = self.request.form
@@ -70,13 +67,15 @@ class ChatUserFoto(grok.View):
             photo = dados_user.photograph
     
             if photo is not None and not ' ' in photo:
-                url_foto = BaseFunc().get_imageVindulaUser(photo)
-                if url_foto:
-                    self.url_image = url_foto
-
-                else:
-                    self.url_image = ''
-                    
+                 local = photo.split('/')
+                 try:
+                     ctx= getSite()[local[0]][local[1]][local[2]]
+                     obj = ctx.restrictedTraverse('@@images').scale('photograph', height=150, width=120)
+                 
+                     self.url_image = obj.index_html()
+                 except:
+                     self.url_image =  ''
+       
             else:
                 self.url_image = ''
         else:

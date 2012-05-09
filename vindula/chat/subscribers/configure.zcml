@@ -2,13 +2,13 @@
     xmlns="http://namespaces.zope.org/zope"
     i18n_domain="vindula.chat">
 
-  <!-- Start up -->
-  <subscriber
+  <!-- Start up 
+  <subscriber 
     for="Products.CMFPlone.interfaces.IPloneSiteRoot
          zope.app.publication.interfaces.IBeforeTraverseEvent"
-    handler=".startup.setupAdminClient"/>
+    handler=".startup.setupAdminClient"/>-->
 
-  <subscriber
+  <!--subscriber
     for="vindula.chat.interfaces.AdminClientConnected"
     handler=".startup.adminConnected"
     />
@@ -16,6 +16,6 @@
   <subscriber
     for="vindula.chat.interfaces.AdminClientDisconnected"
     handler=".startup.adminDisconnected"
-    />
+    />-->
 
 </configure>
