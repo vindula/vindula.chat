@@ -32,9 +32,10 @@ setup(name='vindula.chat',
           'plone.app.registry',
           'plone.app.z3cform',
           
-          'jarn.xmpp.twisted',
+          #'jarn.xmpp.twisted',
           
           'python-cjson',
+          'Twisted',
           #'jarn.jsi18n'
           
           # -*- Extra requirements: -*-

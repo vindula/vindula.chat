@@ -5,7 +5,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.PluggableAuthService.interfaces.events import IPrincipalCreatedEvent, IPrincipalDeletedEvent
 from zope.component import adapter, getUtility
 
-from vindula.chat.interfaces import IAdminClient, IPubSubStorage, IXMPPPasswordStorage, IXMPPUsers
+from vindula.chat.interfaces import IXMPPPasswordStorage, IXMPPUsers
 from vindula.chat.utils.users import setupPrincipal, deletePrincipal
 
 from vindula.chat.utils.models import ModelsUserOpenFire
@@ -19,9 +19,7 @@ def onUserCreation(event):
     """Create a jabber account for new user.
     """
 
-    client = getUtility(IAdminClient)
     xmpp_users = getUtility(IXMPPUsers)
-    storage = getUtility(IPubSubStorage)
     principal = event.principal
     mtool = getToolByName(principal, 'portal_membership')
 
@@ -54,9 +52,7 @@ def onUserCreation(event):
 def onUserDeletion(event):
     """Delete jabber account when a user is removed.
     """
-    client = getUtility(IAdminClient)
     xmpp_users = getUtility(IXMPPUsers)
-    storage = getUtility(IPubSubStorage)
 
     principal_id = event.principal
     principal_jid = xmpp_users.getUserJID(principal_id)

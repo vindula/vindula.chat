@@ -43,11 +43,11 @@ class XMPPUsers(object):
                     'xmpp_domain':registry.xmpp_domain,
                     'xmpp_host':registry.xmpp_host,
                     
-                    'admin_jid':registry.admin_jid,
-                    'admin_pwd':registry.admin_pwd,
+                    #'admin_jid':registry.admin_jid,
+                    #'admin_pwd':registry.admin_pwd,
                     
-                    'conference_jid':registry.conference_jid,
-                    'pubsub_jid':registry.pubsub_jid,
+                    #'conference_jid':registry.conference_jid,
+                    #'pubsub_jid':registry.pubsub_jid,
                     
                     'key_http_user':registry.key_http_user,
                     }
@@ -55,10 +55,10 @@ class XMPPUsers(object):
             vars = {'enable_chat':False,
                     'xmpp_domain':'vindula.com' ,
                     'xmpp_host':'127.0.0.1',
-                    'admin_jid':'admin@vindula.com',
-                    'admin_pwd':'temp123',
-                    'conference_jid':'secret',
-                    'pubsub_jid':'plone.vindula.com',
+                    #'admin_jid':'admin@vindula.com',
+                    #'admin_pwd':'temp123',
+                    #'conference_jid':'secret',
+                    #'pubsub_jid':'plone.vindula.com',
                     'key_http_user':'NYIqhNdx'
                     }
         

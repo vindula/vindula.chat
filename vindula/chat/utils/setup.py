@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from twisted.internet import defer
-from twisted.words.protocols.jabber.jid import JID
+#from twisted.internet import defer
+#from twisted.words.protocols.jabber.jid import JID
 
 from zope.component import getUtility
 from Products.CMFCore.utils import getToolByName
 
-from vindula.chat.interfaces import IAdminClient, IXMPPPasswordStorage, IXMPPUsers
+from vindula.chat.interfaces import IXMPPPasswordStorage, IXMPPUsers
 from vindula.chat.utils.users import setupPrincipal
 from vindula.chat.utils.models import ModelsUserOpenFire
 import pickle
@@ -15,11 +15,15 @@ import pickle
 logger = logging.getLogger('vindula.chat')
 
 def setupXMPPEnvironment(context):
+    
     xmpp_users = getUtility(IXMPPUsers)
     pass_storage = getUtility(IXMPPPasswordStorage)
     mt = getToolByName(context, 'portal_membership')
     
-    member_ids = mt.listMemberIds()
+    #member_ids = mt.listMemberIds()
+    obj_member = mt.searchForMembers(**{'name':''})
+    member_ids = [i.getUserName() for i in obj_member]
+    
     pass_storage.clear()
     
     log = []

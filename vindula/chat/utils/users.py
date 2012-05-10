@@ -28,8 +28,8 @@ def setupPrincipal(principal_jid, principal_password, principal_id):
     page = urllib.urlopen(url)
     result = page.read()
     
-    if 'error' in result:
-        logger.info("%s - Error - %s "% (user, result))
+    if 'error' in result or page.getcode() != 200:
+        logger.info("%s - Error - %s - %s"% (user, result, page.getcode()))
         return False
     else:
         logger.info("%s - OK -"% (user))
@@ -49,8 +49,8 @@ def deletePrincipal(principal_jid):
     page = urllib.urlopen(url)
     result = page.read()
 
-    if 'error' in result:
-        logger.info("%s - Error - %s "% (principal_id, result))
+    if 'error' in result or page.getcode() != 200:
+        logger.info("%s - Error - %s - %s"% (user, result, page.getcode()))
         return False
     else:
         logger.info("%s - OK Delete -"% (principal_id))

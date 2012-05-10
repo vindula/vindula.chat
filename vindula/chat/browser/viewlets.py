@@ -106,5 +106,5 @@ class ChatViewlet(grok.Viewlet):
     
         #User Senha Logado
         altenticado = self.context.portal_membership.getAuthenticatedMember()
-        self.user = altenticado.getId()
+        self.user = altenticado.getUserName()
         self.password = xmpp_users.getUserPassword(self.user)

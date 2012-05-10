@@ -21,7 +21,7 @@
     		  title="vindula.chat: Access XMPP" />
 
   <utility factory=".settings.XMPPUsers" />
-  <utility factory=".storage.PubSubStorage" />
+  <!--utility factory=".storage.PubSubStorage" /-->
   
   <i18n:registerTranslations directory="locales" />
 

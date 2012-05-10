@@ -26,7 +26,7 @@ class IVindulaChatSettings(form.Schema):
                                   required=True,
                                   )
     
-    
+    """
     admin_jid = schema.TextLine(title=_(u"Login do administrador do servidor XMPP "),
                                 description=_(u""),
                                 default=_(u'admin@vindula.com'),
@@ -48,7 +48,7 @@ class IVindulaChatSettings(form.Schema):
                                  default=_(u"secret"),
                                  required=True,
                                  )
-        
+    """    
     key_http_user = schema.TextLine(title=_(u"Chave de HTTP com o plugin 'User Service' do servidor XMPP"),
                                     description=_(u""),
                                     default=_(u"NYIqhNdx"),
