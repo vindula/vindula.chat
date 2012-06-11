@@ -35,6 +35,8 @@
 				
 				<tal:dummy define="user view/user;
 								   passwd view/password;
+								   hostname settings/xmpp_domain;
+								   dummy python:request.RESPONSE.setCookie('__hostname',hostname);
 								   dummy python:request.RESPONSE.setCookie('__ijab_name',user);
 								   dummy python:request.RESPONSE.setCookie('__ijab_password',passwd)" />
 				
@@ -58,7 +60,7 @@
 						var username = $.cookies.get("__ijab_name");
 						var password = $.cookies.get("__ijab_password");
 				
-						launchMini(true, false, window.location.hostname, username, password);
+						launchMini(true, false, $.cookies.get("__hostname"), username, password);
 					});
 				
 				</script>

@@ -11,3 +11,7 @@ Changelog
 1.1.2 - 2012-06-11
 ----------------------
 - Alteração do client em formato de bar
+
+1.1.3 - 2012-06-11
+----------------------
+- Alteração do js de conexão do chat 
