@@ -58,7 +58,7 @@
 						var username = $.cookies.get("__ijab_name");
 						var password = $.cookies.get("__ijab_password");
 				
-						launchMini(true, false, 'vindulaportal.com', username, password);
+						launchMini(true, false, window.location.hostname, username, password);
 					});
 				
 				</script>
