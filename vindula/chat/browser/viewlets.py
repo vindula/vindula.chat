@@ -18,6 +18,11 @@ class ChatViewlet(grok.Viewlet):
     grok.viewletmanager(IPortalFooter) 
     ''' A viewlet show ijab bar. '''
     
+    def settingsChat(self):
+        xmpp_users = getUtility(IXMPPUsers)
+        settings = xmpp_users.getSettings()
+        return settings
+    
        
     def enableChat(self):
         xmpp_users = getUtility(IXMPPUsers)

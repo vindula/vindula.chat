@@ -6,3 +6,8 @@ Changelog
 
 - Adição do objeto de configuração e ativação do vindula.chat
 - Alteração e customizações gerais do sistema
+
+
+1.1.2 - 2012-06-11
+----------------------
+- Alteração do client em formato de bar
