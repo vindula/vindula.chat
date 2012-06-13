@@ -15,7 +15,6 @@ import pickle
 logger = logging.getLogger('vindula.chat')
 
 def setupXMPPEnvironment(context):
-    
     xmpp_users = getUtility(IXMPPUsers)
     pass_storage = getUtility(IXMPPPasswordStorage)
     mt = getToolByName(context, 'portal_membership')
@@ -53,3 +52,28 @@ def setupXMPPEnvironment(context):
         log.append(resposta)
 
     return log
+
+
+def CreateUserXMPP(username):
+    chat = {}
+    xmpp_users = getUtility(IXMPPUsers)
+    pass_storage = getUtility(IXMPPPasswordStorage)
+    
+    try:chat['username'] = unicode(username,'utf-8')
+    except:chat['username'] = username
+    
+    member_jid = xmpp_users.getUserJID(username)
+    member_password = pass_storage.set(username)
+    
+    chat['jid'] =  pickle.dumps(member_jid)
+    
+    try:chat['password'] = unicode(member_password,'utf-8')
+    except:chat['password'] = member_password
+       
+    if setupPrincipal(member_jid, member_password, chat['username']):
+       ModelsUserOpenFire().set_UserOpenFire(**chat)
+       logger.info("Usuario criado no openfire")
+    else:
+       logger.info("Usuario não criado no openfire")
+    
+    
