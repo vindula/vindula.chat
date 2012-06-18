@@ -36,6 +36,11 @@
 						var password = $j.cookies.get("__ijab_password");
 				
 						launchMini(true, false, $j.cookies.get("__hostname"), username, password);
+						
+						// Logout ao click no sair 
+						$j('#personaltools-logout a').click(function(){
+							disconnectMini();			
+						});
 					});
 				</script>
 			</div>
@@ -45,10 +50,7 @@
 							   dummy python:request.RESPONSE.expireCookie('__nickname');
 					   		   dummy python:request.RESPONSE.expireCookie('__ijab_name');
 					   	       dummy python:request.RESPONSE.expireCookie('__ijab_password')" />
-					  
-			<script type="text/javascript">
-				disconnectMini();
-			</script>
+			
 			</tal:cond>
 	</tal:def>
 </div>
