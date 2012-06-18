@@ -47,39 +47,39 @@ class SetupXMPPForm(grok.View):
     
     
     
-class ChatUserFoto(grok.View):
-    grok.context(Interface) 
-    grok.name('portraits-user') 
-    grok.require('zope2.View')
-    
-    def render(self):
-        return self.url_image
-    
-    def update(self):
-        form = self.request.form
-        user = form.get('user','')
-        
-        try:user_id = unicode(user, 'utf-8')    
-        except:user_id = user 
-
-        dados_user =  ModelsFuncDetails().get_FuncDetails(user_id)
-        if dados_user:
-            photo = dados_user.photograph
-    
-            if photo is not None and not ' ' in photo:
-                 local = photo.split('/')
-                 try:
-                     ctx= getSite()[local[0]][local[1]][local[2]]
-                     obj = ctx.restrictedTraverse('@@images').scale('photograph', height=150, width=120)
-                 
-                     self.url_image = obj.index_html()
-                 except:
-                     self.url_image =  ''
-       
-            else:
-                self.url_image = ''
-        else:
-            self.url_image = ''     
+#class ChatUserFoto(grok.View):
+#    grok.context(Interface) 
+#    grok.name('portraits-user') 
+#    grok.require('zope2.View')
+#    
+#    def render(self):
+#        return self.url_image
+#    
+#    def update(self):
+#        form = self.request.form
+#        user = form.get('user','')
+#        
+#        try:user_id = unicode(user, 'utf-8')    
+#        except:user_id = user 
+#
+#        dados_user =  ModelsFuncDetails().get_FuncDetails(user_id)
+#        if dados_user:
+#            photo = dados_user.photograph
+#    
+#            if photo is not None and not ' ' in photo:
+#                 local = photo.split('/')
+#                 try:
+#                     ctx= getSite()[local[0]][local[1]][local[2]]
+#                     obj = ctx.restrictedTraverse('@@images').scale('photograph', height=150, width=120)
+#                 
+#                     self.url_image = obj.index_html()
+#                 except:
+#                     self.url_image =  ''
+#       
+#            else:
+#                self.url_image = ''
+#        else:
+#            self.url_image = ''     
 
 class ChatChangePasswd(grok.View):
     grok.context(ISiteRoot) 

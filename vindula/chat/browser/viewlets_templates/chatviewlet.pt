@@ -1,53 +1,28 @@
 <div id="online-contacts_viewlet" >
-	<tal:def tal:define="member python:context.portal_membership.getAuthenticatedMember();
-						view viewlet;">
-		<tal:cond condition="python: (str(member) != 'Anonymous User') and (view.enableChat())">
-			<!--div id="ijabbar" tal:define="iJabConf view/iJabConf;
-										  site_url view/site_url;">
-				
-				<tal:dummy define="user view/user;
-								   passwd view/password;
-								   dummy python:request.RESPONSE.setCookie('__ijab_name',user);
-								   dummy python:request.RESPONSE.setCookie('__ijab_password',passwd)" />
-				
-				<script type="text/javascript"
-						tal:content="string:var iJabConf=eval(${iJabConf});">
-						var iJabConf = {...};
-			    </script>
-			    
-			    <script type="text/javascript" language="javascript" src="ijab_i18n_pt-br.js"></script>
-				<script type="text/javascript" src="ijab.nocache.js"
-			    	tal:attributes="src string:${site_url}/ijab/ijab.nocache.js">
-			    </script>
-			</div-->
-			
-			
-			
-			<div id="Jappix" tal:define="site_url view/site_url;
-										 settings view/settingsChat">
+	<tal:def tal:define="isAnonymous python:context.portal_membership.isAnonymousUser();
+						 view viewlet;
+						 site_url view/site_url;
+						 settings view/settingsChat">
+		
+		<script type="text/javascript" tal:attributes="src string:${context/portal_url|nothing}/jappix/php/get.php?l=pt-BR&t=js&g=mini.xml&HTTP_HOST=${settings/xmpp_domain}"></script>
+		<tal:cond condition="python: not isAnonymous and view.enableChat()">
+			<div id="Jappix">
 				<link rel="stylesheet" type="text/css" tal:attributes="href string:${context/portal_url|nothing}/jappix/css/mini.css" />
-				
-				<script type="text/javascript" tal:attributes="src string:${context/portal_url|nothing}/jquery.js"></script>
 				<script type="text/javascript" tal:attributes="src string:${context/portal_url|nothing}/jquery.cookies.2.2.0.min.js"></script>
-				
-				<script type="text/javascript" tal:attributes="src string:${context/portal_url|nothing}/jappix/php/get.php?l=pt-BR&t=js&g=mini.xml&HTTP_HOST=${settings/xmpp_domain}"></script>
-				
 				
 				<tal:dummy define="user view/user;
 								   passwd view/password;
 								   hostname settings/xmpp_domain;
+								   nickname view/nickname;
+								   
 								   dummy python:request.RESPONSE.setCookie('__hostname',hostname);
+								   dummy python:request.RESPONSE.setCookie('__nickname',nickname);
 								   dummy python:request.RESPONSE.setCookie('__ijab_name',user);
 								   dummy python:request.RESPONSE.setCookie('__ijab_password',passwd)" />
 				
-				<!--script type="text/javascript"
-						tal:content="string:var iJabConf=eval(${iJabConf});">
-						var iJabConf = {...};
-			   </script-->
-			    
 				<script type="text/javascript">
 					//$j = jQuery.noConflict();
-					$(document).ready(function(){
+					$j(document).ready(function(){
 						// load Jappix Mini
 				
 						MINI_GROUPCHATS = [];
@@ -55,18 +30,25 @@
 				
 						/* Add an animation*/
 						MINI_ANIMATE = true;
-						MINI_NICKNAME = "administrator";
+						MINI_NICKNAME = $j.cookies.get("__nickname");
 						
-						var username = $.cookies.get("__ijab_name");
-						var password = $.cookies.get("__ijab_password");
+						var username = $j.cookies.get("__ijab_name");
+						var password = $j.cookies.get("__ijab_password");
 				
-						launchMini(true, false, $.cookies.get("__hostname"), username, password);
+						launchMini(true, false, $j.cookies.get("__hostname"), username, password);
 					});
-				
 				</script>
-			
 			</div>
-			
 		</tal:cond>
+		<tal:cond condition="isAnonymous">
+			<tal:dummy define="dummy python:request.RESPONSE.expireCookie('__hostname');
+							   dummy python:request.RESPONSE.expireCookie('__nickname');
+					   		   dummy python:request.RESPONSE.expireCookie('__ijab_name');
+					   	       dummy python:request.RESPONSE.expireCookie('__ijab_password')" />
+					  
+			<script type="text/javascript">
+				disconnectMini();
+			</script>
+			</tal:cond>
 	</tal:def>
 </div>

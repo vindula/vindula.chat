@@ -19,3 +19,7 @@ Changelog
 1.1.4 - 2012-06-13
 -----------------------
 - Cração de metodo para criar um unico usuario no chat
+
+1.1.5 - 2012-06-13
+----------------------
+- Adição do metodo de deslogar o usuario e remover os cookie de altenticação
