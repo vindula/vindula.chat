@@ -1,0 +1,44 @@
+#jappix_mini_link {
+    bottom: 0;
+    margin-left: 130px;
+    position: fixed;
+    /*right: 70px;*/
+    z-index: 999;
+}
+#jappix_mini_link *, #jappix_popup * {
+    border: medium none;
+    border-radius: 0 0 0 0;
+    box-shadow: none;
+    color: black;
+    font-size: 11px;
+    height: auto;
+    margin: 0;
+    opacity: 1;
+    overflow: visible;
+    padding: 0;
+    text-align: left;
+    text-shadow: none;
+    text-transform: none;
+    width: auto;
+}
+#jappix_mini_link a.jm_pane {
+    background-color: #F4F4F4;
+    background-position: 0 -100px;
+    background-repeat: repeat-x;
+    border-color: #999999;
+    border-style: solid;
+    border-width: 1px 1px 0;
+    display: block;
+    font-weight: bold;
+    height: 13px;
+    outline-style: none;
+}                
+#jappix_mini_link .jm_images {
+    background-image: url("/++resource++vindula.chat/img/mini.png");
+}                
+
+#jappix_mini_link a.jm_button {
+    padding: 6px 10px;
+    position: relative;
+    z-index: 1;
+}

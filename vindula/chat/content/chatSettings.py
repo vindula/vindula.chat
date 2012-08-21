@@ -26,6 +26,21 @@ class IVindulaChatSettings(form.Schema):
                                   required=True,
                                   )
     
+    server_xmpp_externo = schema.TextLine(title=_(u"Endereço do externo do servidor xmpp"),
+                                  description=_(u"Endereço para o usuário se conectar ao vindula chat através de um cliente externo"),
+                                  default=_(u"127.0.0.1"),
+                                  required=True,
+                                  )
+
+    porta_xmpp_externo = schema.TextLine(title=_(u"Porta externa do servidor xmpp"),
+                                  description=_(u"Porta para o usuário se conectar ao vindula chat através de um cliente externo"),
+                                  default=_(u"5222"),
+                                  required=True,
+                                  )
+
+    
+    
+    
     """
     admin_jid = schema.TextLine(title=_(u"Login do administrador do servidor XMPP "),
                                 description=_(u""),

@@ -23,3 +23,7 @@ Changelog
 1.1.5 - 2012-06-18
 ----------------------
 - Adição do metodo de deslogar o usuario e remover os cookie de altenticação
+
+1.1.6 - 2012-08-21
+------------------------
+- Adição da view com os dados do usuario para conectar com cliente externo

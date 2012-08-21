@@ -20,29 +20,21 @@
 								   dummy python:request.RESPONSE.setCookie('__ijab_name',user);
 								   dummy python:request.RESPONSE.setCookie('__ijab_password',passwd)" />
 				
-				<script type="text/javascript">
-					//$j = jQuery.noConflict();
-					$j(document).ready(function(){
-						// load Jappix Mini
+				<script type="text/javascript" tal:attributes="src string:${context/portal_url|nothing}/++resource++vindula.chat/js/loadChat.js"></script>
+				<link rel="stylesheet" type="text/css" tal:attributes="href string:${context/portal_url|nothing}/++resource++vindula.chat/css/style.css" />
 				
-						MINI_GROUPCHATS = [];
-						MINI_PASSWORDS = [];
+				<div id="jappix_mini_link">
+				    <div class="jm_starter">
+				        <a title="Clique aqui para ver sua senha" tal:attributes="href string:${context/portal_url}/chatpasswd"
+				            class="jm_pane jm_button jm_images jm_popup">
+				            <span class="jm_counter jm_error">
+				                <img tal:attributes="src string:${context/portal_url|nothing}/++resource++vindula.chat/img/changepasswd.png" />
+				                
+				            </span>
+				        </a>
+				    </div>
+				 </div>
 				
-						/* Add an animation*/
-						MINI_ANIMATE = true;
-						MINI_NICKNAME = $j.cookies.get("__nickname");
-						
-						var username = $j.cookies.get("__ijab_name");
-						var password = $j.cookies.get("__ijab_password");
-				
-						launchMini(true, false, $j.cookies.get("__hostname"), username, password);
-						
-						// Logout ao click no sair 
-						$j('#personaltools-logout a').click(function(){
-							disconnectMini();			
-						});
-					});
-				</script>
 			</div>
 		</tal:cond>
 		<tal:cond condition="isAnonymous">

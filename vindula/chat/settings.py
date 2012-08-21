@@ -43,6 +43,9 @@ class XMPPUsers(object):
                     'xmpp_domain':registry.xmpp_domain,
                     'xmpp_host':registry.xmpp_host,
                     
+                    'server_xmpp_externo':registry.server_xmpp_externo,
+                    'porta_xmpp_externo':registry.porta_xmpp_externo,
+                    
                     #'admin_jid':registry.admin_jid,
                     #'admin_pwd':registry.admin_pwd,
                     
@@ -55,6 +58,10 @@ class XMPPUsers(object):
             vars = {'enable_chat':False,
                     'xmpp_domain':'vindula.com' ,
                     'xmpp_host':'127.0.0.1',
+                    
+                    'server_xmpp_externo':'127.0.0.1',
+                    'porta_xmpp_externo':'5222',
+                    
                     #'admin_jid':'admin@vindula.com',
                     #'admin_pwd':'temp123',
                     #'conference_jid':'secret',

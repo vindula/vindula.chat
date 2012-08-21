@@ -82,12 +82,26 @@ class SetupXMPPForm(grok.View):
 #            self.url_image = ''     
 
 class ChatChangePasswd(grok.View):
-    grok.context(ISiteRoot) 
-    grok.name('change-chatpasswd') 
+    grok.context(Interface) 
+    grok.name('chatpasswd') 
     grok.require('zope2.View')
     
     def update(self):
-        pass
-     
+        xmpp_users = getUtility(IXMPPUsers)
+        conf = xmpp_users.getSettings()
+        altenticado = self.context.portal_membership.getAuthenticatedMember()
+        if not altenticado.isAnonymousUser():
+            
+            self.xmpp_externo = conf['server_xmpp_externo']
+            self.porta_externo = conf['porta_xmpp_externo']
+            
+            self.user = altenticado.getUserName()
+            self.password = xmpp_users.getUserPassword(self.user)
+            
+            
+            
+        else:
+            self.request.response.redirect(self.context.absolute_url() + '/login')
+            
     
     

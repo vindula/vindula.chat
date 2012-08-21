@@ -5,12 +5,28 @@
       lang="en"
       metal:use-macro="context/main_template/macros/master">
 	<head>
+		 <metal:block fill-slot="top_slot">
+            <tal:dummy tal:define="dummy python:request.set('disable_border',1);
+                                   disable_column_one python:request.set('disable_plone.leftcolumn',1);
+                                   disable_column_two python:request.set('disable_plone.rightcolumn',1);" />
+        </metal:block>
 		
 	</head>
 	<body>
 	    <div metal:fill-slot="content-core">
-			<h1>Mudar senha</h1>	    	
+	        <div class="titulo marginDif1">
+                <h2>Vindula Chat</h2>
+            </div>
+		    <div class="visualClear"></div>
+			<h2>
+			 Para se conectar no vindula através de um cliente de chat externo utilize os dados abaixo
+			</h2>
+			<br />
 			
+			<h4> Servidor: <span tal:content="view/xmpp_externo|nothing" /></h4>
+			<h4> Porta: <span tal:content="view/porta_externo|nothing" /></h4>
+			<h4> Usuario: <span tal:content="view/user|nothing" /></h4>
+			<h4> Senha: <span tal:content="view/password|nothing" /></h4>
 			
 		</div>
 	</body>
