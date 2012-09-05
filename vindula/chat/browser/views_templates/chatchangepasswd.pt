@@ -23,10 +23,15 @@
 			</h2>
 			<br />
 			
-			<h4> Servidor: <span tal:content="view/xmpp_externo|nothing" /></h4>
-			<h4> Porta: <span tal:content="view/porta_externo|nothing" /></h4>
-			<h4> Usuario: <span tal:content="view/user|nothing" /></h4>
+			<h4> Protocolo: <span>XMPP</span></h4>
+			<h4> Nome do Usuário: <span tal:content="view/user|nothing" /></h4>
+			
+			<h4> Dominío / Servidor: <span tal:content="view/xmpp_externo|nothing" /></h4>
+			<h4> Recurso: <span>** Não há necessidade de preencher **</span></h4>
+			
 			<h4> Senha: <span tal:content="view/password|nothing" /></h4>
+			
+			<h4> Porta(opcional): <span tal:content="view/porta_externo|nothing" /></h4>
 			
 		</div>
 	</body>
