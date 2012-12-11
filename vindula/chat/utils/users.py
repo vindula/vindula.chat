@@ -32,6 +32,7 @@ def setupPrincipal(principal_jid, principal_password, principal_id):
         code = page.getcode()
     except:
         result = 'error'
+        code = 'xxx'
     
     if 'error' in result or code != 200:
         logger.info("%s - Error - %s - %s"% (user, result, code))
