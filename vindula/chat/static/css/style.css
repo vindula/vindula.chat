@@ -1,10 +1,16 @@
 #jappix_mini_link {
-    bottom: 0;
-    margin-left: 130px;
-    position: fixed;
-    /*right: 70px;*/
-    z-index: 999;
+    float: right;
 }
+
+#jappix_mini{
+	bottom: 0;
+    margin-left: 0;
+    position: static;
+    right: 20px;
+    z-index: 999;
+	float: right;
+}
+	
 #jappix_mini_link *, #jappix_popup * {
     border: medium none;
     border-radius: 0 0 0 0;

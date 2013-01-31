@@ -2,6 +2,7 @@
 from five import grok
 from zope.interface import Interface
 from plone.app.layout.viewlets.interfaces import IPortalFooter
+from vindula.controlpanel.browser.views import StaticBarViewletManager
 from vindula.chat.interfaces import IXMPPUsers 
 from zope.app.component.hooks import getSite
 from zope.component import getUtility, getMultiAdapter
@@ -15,7 +16,7 @@ class ChatViewlet(grok.Viewlet):
     grok.context(Interface)
     grok.name('vindula.chat.listUsers') 
     grok.require('zope2.View')
-    grok.viewletmanager(IPortalFooter) 
+    grok.viewletmanager(StaticBarViewletManager) 
     ''' A viewlet show ijab bar. '''
     
     def settingsChat(self):
