@@ -25,7 +25,7 @@ class SyncUser(grok.View):
         host = getSite().portal_url() + '/http-user'
         key = xmpp_users.getSettings().get('key_http_user')
 
-        users = ModelsInstanceFuncdetails().get_allFuncDetails()
+        users = ModelsInstanceFuncdetails().get_AllFuncDetails()
 
         for item in users:
             user = item.get('username')
