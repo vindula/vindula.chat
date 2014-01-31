@@ -10,7 +10,7 @@ import logging
 import urllib
 logger = logging.getLogger('vindula.chat')
 
-from vindula.myvindula.user import ModelsFuncDetails
+from vindula.myvindula.models.instance_funcdetail import ModelsInstanceFuncdetails
 
 class SyncUser(grok.View):
     grok.context(Interface)
@@ -25,11 +25,11 @@ class SyncUser(grok.View):
         host = getSite().portal_url() + '/http-user'
         key = xmpp_users.getSettings().get('key_http_user')
 
-        users = ModelsFuncDetails().get_allFuncDetails()
+        users = ModelsInstanceFuncdetails().get_AllFuncDetails()
 
         for item in users:
-            user = item.username
-            name = item.nickname or item.username
+            user = item.get('username')
+            name = item.get('name') or item.get('username')
     
             url = '%s/plugins/userService/userservice?type=update&secret=%s&username=%s&name=%s' %(host,key,user, name)
             try:   

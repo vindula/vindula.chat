@@ -25,11 +25,17 @@ def setupPrincipal(principal_jid, principal_password, principal_id):
     groups = 'vindula'
     
     url = '%s/plugins/userService/userservice?type=add&secret=%s&username=%s&password=%s&name=%s&email=%s&groups=%s' %(host,key,user, password,name, email, groups)
-    page = urllib.urlopen(url)
-    result = page.read()
     
-    if 'error' in result or page.getcode() != 200:
-        logger.info("%s - Error - %s - %s"% (user, result, page.getcode()))
+    try:
+        page = urllib.urlopen(url)
+        result = page.read()
+        code = page.getcode()
+    except:
+        result = 'error'
+        code = 'xxx'
+    
+    if 'error' in result or code != 200:
+        logger.info("%s - Error - %s - %s"% (user, result, code))
         return False
     else:
         logger.info("%s - OK -"% (user))

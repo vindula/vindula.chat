@@ -28,6 +28,11 @@ class ChatConfigView(grok.View):
             return True 
         else:
             return False
+    
+    def enableConf(self):
+        xmpp_users = getUtility(IXMPPUsers)
+        settings = xmpp_users.getSettings()
+        return settings.get('enable_chat',False)
 
     def render(self):
         return 'vindula-chat-config'
