@@ -12,7 +12,7 @@ $j(document).ready(function(){
     var username = $j.cookies.get("__ijab_name");
     var password = $j.cookies.get("__ijab_password");
 
-    launchMini(true, false, $j.cookies.get("__hostname"), username, password);
+    // launchMini(true, false, $j.cookies.get("__hostname"), username, password);
     
     // Logout ao click no sair 
     $j('#personaltools-logout a').click(function(){

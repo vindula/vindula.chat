@@ -10,7 +10,7 @@ import logging
 import urllib
 logger = logging.getLogger('vindula.chat')
 
-from vindula.myvindula.user import ModelsFuncDetails
+# from vindula.myvindula.user import ModelsFuncDetails
 
 class SyncUser(grok.View):
     grok.context(Interface)
@@ -25,19 +25,20 @@ class SyncUser(grok.View):
         host = getSite().portal_url() + '/http-user'
         key = xmpp_users.getSettings().get('key_http_user')
 
-        users = ModelsFuncDetails().get_allFuncDetails()
+        # users = ModelsFuncDetails().get_allFuncDetails()
+        users = []
 
         for item in users:
             user = item.username
             name = item.nickname or item.username
-    
+
             url = '%s/plugins/userService/userservice?type=update&secret=%s&username=%s&name=%s' %(host,key,user, name)
-            try:   
+            try:
                 page = urllib.urlopen(url)
                 result = page.read()
             except:
                continue
-        
+
             if 'error' in result or page.getcode() != 200:
                 logger.info("%s - Error - %s - %s"% (user, result, page.getcode()))
             else:

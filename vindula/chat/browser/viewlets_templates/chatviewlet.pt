@@ -18,10 +18,18 @@
 								   dummy python:request.RESPONSE.setCookie('__hostname',hostname);
 								   dummy python:request.RESPONSE.setCookie('__nickname',nickname);
 								   dummy python:request.RESPONSE.setCookie('__ijab_name',user);
-								   dummy python:request.RESPONSE.setCookie('__ijab_password',passwd)" />
+								   dummy python:request.RESPONSE.setCookie('__ijab_password',passwd)" >
+
+					<script type="text/javascript" tal:content="python:'''
+					$j(document).ready(function(){
+					    // load Jappix Mini
+						launchMini(true, false, %(hostname)s, %(username)s, %(password)s);
+					});'''%({'hostname':hostname,'username':user,'password':passwd})"></script>
+				</tal:dummy>
 				
 				<script type="text/javascript" tal:attributes="src string:${context/portal_url|nothing}/++resource++vindula.chat/js/loadChat.js"></script>
 				<link rel="stylesheet" type="text/css" tal:attributes="href string:${context/portal_url|nothing}/++resource++vindula.chat/css/style.css" />
+
 				
 				<div id="jappix_mini_link">
 				    <div class="jm_starter">
