@@ -23,7 +23,7 @@
 					<script type="text/javascript" tal:content="python:'''
 					$j(document).ready(function(){
 					    // load Jappix Mini
-						launchMini(true, false, %(hostname)s, %(username)s, %(password)s);
+						launchMini(true, false, '%(hostname)s', '%(username)s', '%(password)s' );
 					});'''%({'hostname':hostname,'username':user,'password':passwd})"></script>
 				</tal:dummy>
 				
