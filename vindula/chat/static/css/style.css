@@ -1,16 +1,10 @@
 #jappix_mini_link {
-    float: right;
-}
-
-#jappix_mini{
-	bottom: 0;
-    margin-left: 0;
-    position: static;
-    right: 20px;
+    bottom: 0;
+    margin-left: 130px;
+    position: fixed;
+    /*right: 70px;*/
     z-index: 999;
-	float: right;
 }
-	
 #jappix_mini_link *, #jappix_popup * {
     border: medium none;
     border-radius: 0 0 0 0;
@@ -36,7 +30,7 @@
     border-width: 1px 1px 0;
     display: block;
     font-weight: bold;
-    height: 17px;
+    height: 13px;
     outline-style: none;
 }                
 #jappix_mini_link .jm_images {
@@ -44,7 +38,7 @@
 }                
 
 #jappix_mini_link a.jm_button {
-    padding: 2px 10px 6px 10px;
+    padding: 6px 10px;
     position: relative;
     z-index: 1;
 }
